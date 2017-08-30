@@ -1,0 +1,98 @@
+<!--
+Grupo:
+Fábio Jauberti Lopes
+Isabelle Ferreira Soares
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery Mobile: Pages within Pages</title> 
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.css" />
+        <script src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.0a1/jquery.mobile-1.0a1.min.js"></script>
+        <script>
+        function showStatus(){
+            var1 = parseInt(localStorage.clickcount);
+            var2 = parseInt(localStorage.clickcount2);
+            document.getElementById("result").innerHTML = "<p align='center'>Força Total: " + (var1+var2) + "<p align='center'> Level do Personagem: " + var2 + "<p align='center'>Level das Armaduras: " + var1;
+        }
+
+        function clickIncreaseArmor() {
+            if(typeof(Storage) !== "undefined") {
+                if (localStorage.clickcount) {
+                    localStorage.clickcount = Number(localStorage.clickcount)+1;
+                } else {
+                    localStorage.clickcount = 1;
+                }
+                showStatus();
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+
+        function clickDecreaseArmor() {
+            if(typeof(Storage) !== "undefined") {
+                if (localStorage.clickcount) {
+                    localStorage.clickcount = Number(localStorage.clickcount)-1;
+                } else {
+                    localStorage.clickcount = 1;
+                }
+                showStatus();
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+
+        function clickIncreaseLevel() {
+            if(typeof(Storage) !== "undefined") {
+                if (localStorage.clickcount2) {
+                    localStorage.clickcount2 = Number(localStorage.clickcount2)+1;
+                } else {
+                    localStorage.clickcount2 = 1;
+                }
+                showStatus();
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+
+        function clickDecreaseLevel() {
+            if(typeof(Storage) !== "undefined") {
+                if (localStorage.clickcount2) {
+                    localStorage.clickcount2 = Number(localStorage.clickcount2)-1;
+                } else {
+                    localStorage.clickcount2 = 1;
+                }
+                showStatus();
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        }
+
+
+        </script>
+    </head>
+    <body onload="showStatus();">
+    <div data-role="page" id="home">
+       
+        <div data-role="header">
+        <h1>Munchkin - Contador de Level</h1>
+        <div data-role="content"> 
+        <div align="center"><img src="img/lvlcounter.png" alt="" /></div>
+        </div>
+       
+        <div id="result"></div>
+        <div align="center"><p><button onclick="clickIncreaseArmor()" type="button">+ Armadura</button></p></div>
+        <div align="center"><p><button onclick="clickDecreaseArmor()" type="button">- Armadura</button></p></div> 
+        <div align="center"><p><button onclick="clickIncreaseLevel()" type="button">+ Level</button></p></div>
+        <div align="center"><p><button onclick="clickDecreaseLevel()" type="button">- Level</button></p></div>
+        </p>    
+        </div>
+       
+        <div data-role="footer">
+           <p></p>
+        </div>
+      </div>
+    </body>
+</html>
